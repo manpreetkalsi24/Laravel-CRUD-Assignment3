@@ -30,14 +30,7 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $request->validate([
-            'fname' => 'required|string',
-            'lname' => 'required|string',
-            'email' => 'required|email'
-        ]);
-
-        Student::create($request->all());
-
+        Student::create($request->validated());
         return redirect()->route('students.index');
     }
 
@@ -62,14 +55,7 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $request->validate([
-            'fname' => 'required|string',
-            'lname' => 'required|string',
-            'email' => 'required|email'
-        ]);
-
-        $student->update($request->all());
-
+        $student->update($request->validated());
         return redirect()->route('students.index');
     }
 

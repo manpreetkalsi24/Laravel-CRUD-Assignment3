@@ -19,6 +19,7 @@
         <div>
             <a class="btn btn-outline-light btn-sm me-2" href="{{ route('students.index') }}">Students</a>
             <a class="btn btn-outline-light btn-sm" href="{{ route('courses.index') }}">Courses</a>
+            <a class="btn btn-outline-light btn-sm" href="{{ route('professors.index') }}">Professors</a>
         </div>
     </div>
 </nav>

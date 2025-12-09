@@ -7,23 +7,59 @@
 <div class="card shadow-sm">
     <div class="card-body">
 
+        
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <h5 class="fw-bold">Please fix the following errors:</h5>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('courses.update', $course->id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label class="form-label">Course Name</label>
-                <input type="text" name="course_name" value="{{ $course->course_name }}" class="form-control" required>
+                <input 
+                    type="text"
+                    name="course_name"
+                    value="{{ old('course_name', $course->course_name) }}"
+                    class="form-control @error('course_name') is-invalid @enderror"
+                >
+                @error('course_name')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Course Code</label>
-                <input type="text" name="course_code" value="{{ $course->course_code }}" class="form-control" required>
+                <input 
+                    type="text"
+                    name="course_code"
+                    value="{{ old('course_code', $course->course_code) }}"
+                    class="form-control @error('course_code') is-invalid @enderror"
+                >
+                @error('course_code')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Description</label>
-                <textarea name="description" rows="3" class="form-control">{{ $course->description }}</textarea>
+                <textarea 
+                    name="description"
+                    rows="3"
+                    class="form-control @error('description') is-invalid @enderror"
+                >{{ old('description', $course->description) }}</textarea>
+
+                @error('description')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Update Course</button>
