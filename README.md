@@ -1,59 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel CRUD Application – Students, Courses & Professors
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A complete Laravel application implementing:
 
-## About Laravel
+- Full CRUD for **Students**, **Courses**, **Professors**
+- **Many-to-Many** relationship between *Students ↔ Courses*
+- **One-to-One** relationship between *Course ↔ Professor*
+  
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Students
+- Create, edit, delete students
+- Assign multiple courses to a student
+- View student details including enrolled courses and professors
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Courses
+- Full CRUD functionality
+- Assign a professor to the course (One-to-One)
+- View enrolled students
 
-## Learning Laravel
+### Professors
+- Full CRUD
+- Each professor is assigned to exactly one course
+- Displayed in course & student details
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Students Dashboard
+URL:- http://127.0.0.1:8000/students
 
-## Laravel Sponsors
+### **All Students Detail Page**
+<img width="1903" height="870" alt="image" src="https://github.com/user-attachments/assets/5774a77f-3dc5-4e69-bef6-e468ca4291e0" />
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### **Particular Student Detail page**
+<img width="1917" height="872" alt="image" src="https://github.com/user-attachments/assets/f45491af-6075-4977-bd3c-e343922724b4" />
 
-### Premium Partners
+### **Particular Student Edit Detail page**
+<img width="1918" height="870" alt="image" src="https://github.com/user-attachments/assets/6a92795f-5dd1-49c4-b4bb-e6637b89c548" />
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### **Particular Student delete page**
+<img width="1913" height="861" alt="image" src="https://github.com/user-attachments/assets/dd1a0ba7-5576-4fe1-9949-05c02132aeb7" />
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Courses Dashboard
+URL:- http://127.0.0.1:8000/courses
 
-## Code of Conduct
+### **All Courses Detail Page**
+<img width="1918" height="776" alt="image" src="https://github.com/user-attachments/assets/c54ff2dd-de53-46b5-a1dc-05c2e72b714f" />
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **Particular Course Detail page**
+<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/933a1f91-db17-4e30-b595-23bfacab667a" />
 
-## Security Vulnerabilities
+### **Particular Course Edit Detail page**
+<img width="1918" height="758" alt="image" src="https://github.com/user-attachments/assets/698624c4-35a2-49da-a6e7-ff590f0467ab" />
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **Particular Course delete page**
+<img width="1918" height="846" alt="image" src="https://github.com/user-attachments/assets/860ed714-6c16-4c58-8768-c869d4a02838" />
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Professors Dashboard
+URL:- http://127.0.0.1:8000/professors
+
+### **All Professors Detail Page**
+<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/81ed49b9-3049-44ba-90b2-ace8e8762369" />
+
+### **Particular Professor Detail page**
+<img width="1916" height="738" alt="image" src="https://github.com/user-attachments/assets/43bfe4d0-6f8e-48de-a60e-b3969d33312f" />
+
+### **Particular Professor Edit Detail page**
+<img width="1918" height="467" alt="image" src="https://github.com/user-attachments/assets/df1c7dac-cb5e-4174-8b22-358b34267ba2" />
+
+### **Particular Professor delete page**
+<img width="1918" height="846" alt="image" src="https://github.com/user-attachments/assets/860ed714-6c16-4c58-8768-c869d4a02838" />
+
+
+
+
+
+
+
+
+
