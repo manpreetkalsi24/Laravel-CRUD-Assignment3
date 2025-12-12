@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Course;
 
 class StudentController extends Controller
 {
@@ -22,7 +23,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $courses = Course::all();
+        return view('students.create', compact('courses'));
     }
 
     /**
@@ -30,15 +32,22 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        Student::create($request->validated());
+        $student = Student::create($request->validated());
+
+        if ($request->has('courses')) {
+            $student->courses()->attach($request->courses);
+        }
+
         return redirect()->route('students.index');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Student $student)
     {
+        $student->load('courses.professor');
         return view('students.show', compact('student'));
     }
 
@@ -47,8 +56,11 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('students.edit', compact('student'));
+        $courses = Course::all(); 
+
+        return view('students.edit', compact('student', 'courses'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -56,6 +68,9 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student->update($request->validated());
+
+        $student->courses()->sync($request->courses);
+
         return redirect()->route('students.index');
     }
 

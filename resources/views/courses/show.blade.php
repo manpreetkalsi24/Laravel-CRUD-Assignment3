@@ -2,45 +2,42 @@
 
 @section('content')
 
-<h1 class="mb-4 fw-bold">Course Details</h1>
+<h1 class="mb-4">Course Details</h1>
 
-<div class="card shadow border-0">
-    <div class="card-body p-4">
+<div class="card shadow-sm">
+    <div class="card-body">
 
-        <div class="mb-4">
+        <h5 class="fw-bold">Course Name</h5>
+        <h5>{{ $course->course_name }}</h4>
+        <h5 class="fw-bold">Course Description</h5>
+        <p class="text-muted">{{ $course->description }}</p>
 
-            <h2 class="fw-bold text-primary mb-1">
-                {{ $course->course_name }}
-            </h2>
+        <hr>
+        <h5 class="fw-bold">Professor</h5>
+        @if ($course->professor)
+            <p>{{ $course->professor->name }}</p>
+        @else
+            <p class="text-muted">No professor assigned.</p>
+        @endif
 
-            <h5 class="text-secondary mb-3">
-                {{ $course->course_code }}
-            </h5>
+        <hr>
 
-            <p class="fs-5 text-dark">
-                {{ $course->description ?? 'No description available.' }}
-            </p>
+        
+        <h5 class="fw-bold">Enrolled Students</h5>
+        @if ($course->students->count() > 0)
+            <ul>
+                @foreach ($course->students as $student)
+                    <li>{{ $student->fname }} {{ $student->lname }}</li>
+                @endforeach
+            </ul>
+        @else
+            <p class="text-muted">No students enrolled.</p>
+        @endif
 
-        </div>
+        <hr>
 
-        <div class="mt-4">
-            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning text-white me-2">
-                Edit
-            </a>
-
-            <form action="{{ route('courses.destroy', $course->id) }}" method="POST" class="d-inline">
-                @csrf
-                @method('DELETE')
-
-                <button class="btn btn-danger me-2" onclick="return confirm('Are you sure you want to delete this course?')">
-                    Delete
-                </button>
-            </form>
-
-            <a href="{{ route('courses.index') }}" class="btn btn-secondary">
-                Back
-            </a>
-        </div>
+        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ route('courses.index') }}" class="btn btn-secondary">Back</a>
 
     </div>
 </div>

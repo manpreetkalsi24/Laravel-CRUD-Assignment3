@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Professor;
 
 class CourseController extends Controller
 {
@@ -13,7 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-         $courses = Course::all();
+        $courses = Course::all();
         return view('courses.index', compact('courses'));
     }
 
@@ -22,7 +23,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        $professors = Professor::all();
+        return view('courses.create', compact('professors'));
     }
 
     /**
@@ -54,7 +56,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('courses.edit', compact('course'));
+        $professors = Professor::all();
+
+        return view('courses.edit', compact('course', 'professors'));
     }
 
     /**
@@ -62,13 +66,7 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        $request->validate([
-            'course_name' => 'required|string',
-            'course_code' => 'required|string',
-            'description' => 'nullable|string',
-        ]);
-
-        $course->update($request->all());
+        $course->update($request->validated());
 
         return redirect()->route('courses.index');
     }

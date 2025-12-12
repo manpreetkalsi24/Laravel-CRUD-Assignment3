@@ -22,7 +22,9 @@ class UpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'professor_id' => 'nullable|exists:professors,id', // IMPORTANT!
         ];
     }
 }

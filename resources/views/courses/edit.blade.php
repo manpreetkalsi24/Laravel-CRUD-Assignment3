@@ -23,38 +23,27 @@
             @csrf
             @method('PUT')
 
+            
             <div class="mb-3">
-                <label class="form-label">Course Name</label>
+                <label class="form-label fw-bold">Course Name</label>
                 <input 
-                    type="text"
+                    type="text" 
                     name="course_name"
-                    value="{{ old('course_name', $course->course_name) }}"
                     class="form-control @error('course_name') is-invalid @enderror"
+                    value="{{ old('course_name', $course->course_name) }}"
                 >
                 @error('course_name')
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
 
+            
             <div class="mb-3">
-                <label class="form-label">Course Code</label>
-                <input 
-                    type="text"
-                    name="course_code"
-                    value="{{ old('course_code', $course->course_code) }}"
-                    class="form-control @error('course_code') is-invalid @enderror"
-                >
-                @error('course_code')
-                    <div class="text-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Description</label>
+                <label class="form-label fw-bold">Description</label>
                 <textarea 
-                    name="description"
-                    rows="3"
+                    name="description" 
                     class="form-control @error('description') is-invalid @enderror"
+                    rows="3"
                 >{{ old('description', $course->description) }}</textarea>
 
                 @error('description')
@@ -62,10 +51,26 @@
                 @enderror
             </div>
 
+            
+            <div class="mb-3">
+                <label class="form-label fw-bold">Assign Professor</label>
+                <select name="professor_id" class="form-control">
+                    <option value="">-- Select Professor --</option>
+
+                    @foreach ($professors as $professor)
+                        <option value="{{ $professor->id }}"
+                            @selected($course->professor_id == $professor->id)
+                        >
+                            {{ $professor->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Update Course</button>
             <a href="{{ route('courses.index') }}" class="btn btn-secondary">Back</a>
-        </form>
 
+        </form>
     </div>
 </div>
 

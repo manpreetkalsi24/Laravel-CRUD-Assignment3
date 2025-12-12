@@ -24,6 +24,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Courses</th>
                     <th width="180px">Actions</th>
                 </tr>
             </thead>
@@ -35,6 +36,22 @@
                     <td>{{ $student->fname }}</td>
                     <td>{{ $student->lname }}</td>
                     <td>{{ $student->email }}</td>
+                    <td>
+                        @php
+                        $courses = $student->courses;
+                        @endphp
+
+                        @foreach ($courses->take(2) as $course)
+                        <span class="badge bg-primary">{{ $course->course_name }}</span>
+                        @endforeach
+
+                        @if ($courses->count() > 2)
+                        <span class="badge bg-secondary">
+                            +{{ $courses->count() - 2 }} more
+                        </span>
+                        @endif
+                    </td>
+
 
                     <td>
                         <a href="{{ route('students.show', $student->id) }}" class="btn btn-sm btn-info text-white">View</a>

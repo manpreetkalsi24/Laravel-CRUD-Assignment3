@@ -24,6 +24,7 @@
                     <th>Course Name</th>
                     <th>Course Code</th>
                     <th>Description</th>
+                    <th>Professors</th>
                     <th width="180px">Actions</th>
                 </tr>
             </thead>
@@ -35,6 +36,8 @@
                     <td>{{ $course->course_name }}</td>
                     <td>{{ $course->course_code }}</td>
                     <td>{{ Str::limit($course->description, 60) }}</td>
+                    <td>{{ $course->professor->name ?? 'Not Assigned' }}</td>
+
 
                     <td>
                         <a href="{{ route('courses.show', $course->id) }}" class="btn btn-sm btn-info text-white">View</a>
