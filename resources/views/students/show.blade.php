@@ -7,7 +7,7 @@
 <div class="card shadow-sm">
     <div class="card-body">
 
-        {{-- STUDENT BASIC INFO --}}
+        
         <h3 class="fw-bold mb-1">{{ $student->fname }} {{ $student->lname }}</h3>
         <p class="text-muted">{{ $student->email }}</p>
 
@@ -19,7 +19,7 @@
 
         <hr>
 
-        {{-- ENROLLED COURSES --}}
+        
         <h5 class="fw-bold">Enrolled Courses</h5>
 
         @if ($student->courses->count() == 0)
@@ -49,7 +49,7 @@
 
         <hr>
 
-        {{-- ACTION BUTTONS --}}
+        
         <div class="mt-3">
 
             <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning">

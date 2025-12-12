@@ -20,7 +20,7 @@
         <table class="table table-striped table-bordered align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th>Sr. No.</th>
+                    <th>#</th>
                     <th>Course Name</th>
                     <th>Course Code</th>
                     <th>Description</th>
