@@ -8,7 +8,7 @@ A complete Laravel application implementing:
   
 ---
 
-## 🚀 Features
+## Features
 
 ### Students
 - Create, edit, delete students
